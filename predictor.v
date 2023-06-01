@@ -10,11 +10,17 @@ always@(posedge clk)
         if (result)
             begin
                 if (taken == 1'b1)
-                    if (!(counter[0] == 1 && counter[1] == 1))
-                        counter = counter + 1;
+                    begin
+                        if (!(counter[0] == 1 && counter[1] == 1))
+                            begin
+                                counter = counter + 1;
+                            end
+                    end
                 else 
-                    if (!(counter[0] == 0 && counter[1] == 0))
-                        counter = counter - 1;
+                    begin
+                        if (!(counter[0] == 0 && counter[1] == 0))
+                            counter = counter - 1;
+                    end
             end
 
     end
